@@ -1,0 +1,17 @@
+const express = require('express');
+const authController = require('../controllers/authController');
+const authMiddleware = require('../middleware/authMiddleware');
+const router = express.Router();
+
+router.post('/signup', authController.signup);
+router.post('/login', authController.login);
+router.post('/logout', authController.logout);
+router.get('/me', authController.getMe);
+router.get('/users', authMiddleware, authController.getAllUsers);
+router.get('/callback', authController.handleOAuthCallback);
+router.post('/callback', authController.handleToken);
+router.post('/reset-password', authController.requestPasswordReset);
+router.put('/reset-password', authController.updatePassword);
+router.get('/verify-recovery', authController.handlePasswordRecovery);
+
+module.exports = router;
