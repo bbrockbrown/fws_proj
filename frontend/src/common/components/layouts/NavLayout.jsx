@@ -12,6 +12,7 @@ const NavContainer = styled.div`
   align-items: center;
   padding: 0px 50px;
   border-bottom: 1px solid rgb(231, 237, 242);
+  margin-left: 22%;
 `;
 
 const IconContainer = styled.div`
