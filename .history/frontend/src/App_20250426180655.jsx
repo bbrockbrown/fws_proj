@@ -1,30 +1,18 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
-import Feed from 'common/components/Feed';
+// import Feed from 'common/components/Feed';
 import MemberCard from 'common/components/MemberCard';
-import SidebarLayout from 'common/components/layouts/SidebarLayout';
 
 import './App.css';
 import NavLayout from './common/components/layouts/NavLayout.jsx';
+import SidebarLayout from 'common/components/layouts/SidebarLayout';
 
 function App() {
   return (
     <div className='App'>
-      <NavLayout />
       <SidebarLayout />
-      <div
-        className='content'
-        style={{
-          display: 'flex',
-          paddingRight: '88px',
-          marginLeft: '22%',
-        }}
-      >
-        <Feed />
-        <MemberCard />
-      </div>
+      <NavLayout />
+      <MemberCard />
     </div>
   );
 }

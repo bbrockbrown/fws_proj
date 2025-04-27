@@ -1,0 +1,145 @@
+import React, { useState } from 'react';
+
+import {
+  BookmarkIcon,
+  ChatBubbleIcon,
+  PersonIcon,
+} from '@radix-ui/react-icons';
+import nulogo from 'assets/icons/nulogo.svg';
+import styled from 'styled-components';
+
+const BarContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  z-index: 9;
+  width: 22%;
+  min-width: 160px;
+  height: 100vh;
+  text-align: center;
+`;
+
+const InfoContainer = styled.div`
+  background-color: #383a45;
+  background-image: linear-gradient(
+    135deg,
+    rgb(85, 88, 104) 0%,
+    rgb(67, 70, 83) 50%
+  );
+`;
+
+const Logo = styled.img`
+  max-width: 80%;
+  max-height: 90px;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const LogoText = styled.h2`
+  font-family: 'Courier New', monospace;
+  color: white;
+  margin-bottom: 0px;
+`;
+
+const SubLogoText = styled.h6`
+  font-family: 'Courier New', monospace;
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+`;
+
+const IconContainer = styled.div`
+  padding-bottom: 15px;
+  padding-top: 10px;
+  border-right: 1px solid #e7edf2;
+  background-color: #f7f9fb;
+  font-family: 'Courier New', monospace;
+`;
+
+const IconList = styled.ul`
+  padding: 0 1rem;
+  text-align: center;
+`;
+
+const IconItem = styled.li`
+  list-style: none;
+  width: 100%;
+`;
+
+const IconLink = styled.a`
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #383a45;
+
+  &:hover {
+    color: #82243e;
+  }
+`;
+
+export default function SidebarLayout() {
+  return (
+    <BarContainer>
+      <div style={{ height: '100%', maxWidth: '100%' }}>
+        <InfoContainer>
+          <Logo src={nulogo} />
+          <LogoText>CatConnect</LogoText>
+          <SubLogoText>Social Network</SubLogoText>
+        </InfoContainer>
+        <IconContainer>
+          <div
+            style={{
+              maxWidth: '250px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <IconList>
+              <IconItem>
+                <IconLink href='/'>
+                  <PersonIcon />
+                  <span>People</span>
+                </IconLink>
+              </IconItem>
+              <IconItem>
+                <IconLink href='/'>
+                  <ChatBubbleIcon />
+                  <span>Chats</span>
+                </IconLink>
+              </IconItem>
+              <IconItem>
+                <IconLink href='/'>
+                  <BookmarkIcon />
+                  <span>Saved</span>
+                </IconLink>
+              </IconItem>
+              <IconItem>
+                <IconLink href='/'>
+                  <svg
+                    width='15'
+                    height='15'
+                    viewBox='0 0 15 15'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    {/* ...existing SVG path... */}
+                  </svg>
+                  <span>My Classes</span>
+                </IconLink>
+              </IconItem>
+            </IconList>
+          </div>
+        </IconContainer>
+      </div>
+    </BarContainer>
+  );
+}
