@@ -4,30 +4,23 @@ import { Avatar } from '@mui/material';
 import styled from 'styled-components';
 
 const FeedContainer = styled.div`
-  padding: 30px 40px 70px 40px;
-  width: 100%;
-  max-width: 66.6667%;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  padding: 30px 60px 70px 40px;
+  flex: 0 0 66.6667%;
+  max-width: 0.66.6667%;
 `;
 
 const PostList = styled.ul`
   position: relative;
   padding: 0;
-  margin: 0;
-  width: 100%;
 `;
 
 const PostItem = styled.li`
   list-style: none;
   padding: 0;
-  padding-right: 1.5rem;
   margin-top: 0px;
   margin-bottom: 2.5rem;
+  border: none !important;
   position: relative;
-  border-bottom: 1px solid #e7edf2;
-  width: 100%;
-  box-sizing: border-box;
 `;
 
 const PostAvatar = styled.div`
@@ -45,9 +38,6 @@ const PostContent = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: auto;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
 `;
 
 export default function Feed() {
