@@ -18,8 +18,8 @@ function App() {
         className='content'
         style={{
           display: 'flex',
+          flexDirection: 'column',
           paddingRight: '88px',
-          marginLeft: '22%',
         }}
       >
         <Feed />

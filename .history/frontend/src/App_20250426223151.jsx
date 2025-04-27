@@ -19,7 +19,6 @@ function App() {
         style={{
           display: 'flex',
           paddingRight: '88px',
-          marginLeft: '22%',
         }}
       >
         <Feed />
