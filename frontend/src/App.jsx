@@ -18,8 +18,11 @@ function App() {
         className='content'
         style={{
           display: 'flex',
-          paddingRight: '88px',
+          paddingRight: '20px',
           marginLeft: '22%',
+          width: '78%',
+          boxSizing: 'border-box',
+          overflowX: 'hidden'
         }}
       >
         <Feed />
