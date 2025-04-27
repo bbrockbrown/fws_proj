@@ -4,7 +4,8 @@ import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import styled from 'styled-components';
 
 const MemCardContainer = styled.div`
-  padding: 30px 20px 70px 30px;
+  padding: 30px 30px 70px 30px;
+  min-width: 33.33%;
   width: 100%;
   border-radius: 12px;
   color: rgb(98, 98, 118);
@@ -15,9 +16,7 @@ const MemCardContainer = styled.div`
     rgba(255, 255, 255, 0) 25%,
     rgba(130, 36, 227, 0.07) 100%
   );
-  margin-top: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-top: 10px;
 `;
 
 const CardTitle = styled.div`
