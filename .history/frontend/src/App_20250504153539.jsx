@@ -14,13 +14,11 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path='/' element={<NavLayout />}>
           <Route index element={<Home />} />
         </Route>
       </Routes>
-    </BrowserRouter>
   );
 }
 

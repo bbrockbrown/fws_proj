@@ -85,7 +85,6 @@ export default function NavLayout() {
           <Button variant='outlined'> Sign Up </Button>
         </div>
       </NavContainer>
-      <Outlet />
     </>
   );
 }

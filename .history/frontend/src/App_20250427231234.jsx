@@ -7,20 +7,22 @@ import NavLayout from 'common/components/layouts/NavLayout.jsx';
 //   PrivateRoute,
 //   PublicOnlyRoute,
 // } from './components/routes/ProtectedRoutes';
-// import { UserProvider } from 'common/contexts/UserContext';
+import { UserProvider } from 'common/contexts/UserContext';
 import Home from 'pages/Home';
 
 import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<NavLayout />}>
-          <Route index element={<Home />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<NavLayout />}>
+            <Route index element={<Home />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

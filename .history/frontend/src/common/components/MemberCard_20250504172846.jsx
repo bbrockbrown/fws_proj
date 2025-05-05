@@ -59,6 +59,11 @@ export default function MemberCard() {
     getAllUsers();
   }, []);
 
+  // Log users in testing whenever we fetch
+  useEffect(() => {
+    console.log('New users:', allUsers);
+  }, [allUsers]);
+
   function MemberToggle() {
     const [mode, setMode] = useState('Newest');
 

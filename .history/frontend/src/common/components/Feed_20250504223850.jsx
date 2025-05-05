@@ -80,28 +80,6 @@ export default function Feed() {
     getAllPosts();
   }, []);
 
-  function formatDate(dateString) {
-    const nowMs = Date.now();
-    const postedMs = new Date(dateString).getTime();
-    // always work with a positive difference
-    const diffMs = Math.abs(nowMs - postedMs);
-
-    const seconds = Math.floor(diffMs / 1000);
-    const minutes = Math.floor(diffMs / (1000 * 60));
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (seconds < 60) {
-      return `posted ${seconds} seconds ago`;
-    } else if (minutes < 60) {
-      return `posted ${minutes} minutes ago`;
-    } else if (hours < 24) {
-      return `posted ${hours} hours ago`;
-    } else {
-      return `posted ${days} days ago`;
-    }
-  }
-
   return (
     <FeedContainer>
       <PostList>
@@ -119,7 +97,7 @@ export default function Feed() {
                 </div>
                 <div>
                   <p style={{ fontSize: '1rem', color: 'gray' }}>
-                    {formatDate(post.created_at)}
+                    {post.created_at}
                   </p>
                 </div>
               </div>

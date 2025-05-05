@@ -50,7 +50,6 @@ export default function MemberCard() {
           throw new Error('ERROR FETCHING', response.status);
         }
         const data = await response.json();
-        console.log('Fetched users', data);
         setAllUsers(data);
       } catch (e) {
         console.error('Error! Message is:', e.message);
@@ -58,6 +57,11 @@ export default function MemberCard() {
     };
     getAllUsers();
   }, []);
+
+  // Log users in testing whenever we fetch
+  useEffect(() => {
+    console.log('New users:', allUsers);
+  }, [allUsers]);
 
   function MemberToggle() {
     const [mode, setMode] = useState('Newest');

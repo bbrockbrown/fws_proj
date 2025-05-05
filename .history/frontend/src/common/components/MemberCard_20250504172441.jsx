@@ -38,26 +38,21 @@ export default function MemberCard() {
     const getAllUsers = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/users`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-type': 'application/json',
-            },
-          }
+          `${process.env.REACT_APP_BACKEND_URL}/users`
         );
-        if (!response.ok) {
-          throw new Error('ERROR FETCHING', response.status);
-        }
         const data = await response.json();
-        console.log('Fetched users', data);
         setAllUsers(data);
       } catch (e) {
-        console.error('Error! Message is:', e.message);
+        console.error('Error', e);
       }
     };
     getAllUsers();
   }, []);
+
+  // Log users in testing whenever we fetch
+  useEffect(() => {
+    console.log('New users:', allUsers);
+  }, [allUsers]);
 
   function MemberToggle() {
     const [mode, setMode] = useState('Newest');

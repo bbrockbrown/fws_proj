@@ -81,25 +81,32 @@ export default function Feed() {
   }, []);
 
   function formatDate(dateString) {
-    const nowMs = Date.now();
-    const postedMs = new Date(dateString).getTime();
-    // always work with a positive difference
-    const diffMs = Math.abs(nowMs - postedMs);
+    const posted = new Date(dateString);
+    const now = new Date();
+    const diffInMillis = Math.abs(now - posted); // Use absolute value
+    const diffInMinutes = Math.floor(diffInMillis / (1000 * 60));
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    const diffInDays = Math.floor(diffInHours / 24);
 
-    const seconds = Math.floor(diffMs / 1000);
-    const minutes = Math.floor(diffMs / (1000 * 60));
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (seconds < 60) {
-      return `posted ${seconds} seconds ago`;
-    } else if (minutes < 60) {
-      return `posted ${minutes} minutes ago`;
-    } else if (hours < 24) {
-      return `posted ${hours} hours ago`;
-    } else {
-      return `posted ${days} days ago`;
+    // Check if date is in the future
+    if (posted > now) {
+      return 'just now';
     }
+
+    if (diffInDays > 0) {
+      return `posted ${diffInDays} ${diffInDays === 1 ? 'day' : 'days'} ago`;
+    }
+
+    if (diffInHours > 0) {
+      const remainingMinutes = diffInMinutes % 60;
+      return `posted ${diffInHours} ${diffInHours === 1 ? 'hour' : 'hours'} and ${remainingMinutes} ${remainingMinutes === 1 ? 'min' : 'mins'} ago`;
+    }
+
+    if (diffInMinutes <= 0) {
+      return 'just now';
+    }
+
+    return `posted ${diffInMinutes} ${diffInMinutes === 1 ? 'min' : 'mins'} ago`;
   }
 
   return (

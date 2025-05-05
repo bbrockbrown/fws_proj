@@ -7,7 +7,7 @@ import NavLayout from 'common/components/layouts/NavLayout.jsx';
 //   PrivateRoute,
 //   PublicOnlyRoute,
 // } from './components/routes/ProtectedRoutes';
-// import { UserProvider } from 'common/contexts/UserContext';
+import { UserProvider } from 'common/contexts/UserContext';
 import Home from 'pages/Home';
 
 import './App.css';

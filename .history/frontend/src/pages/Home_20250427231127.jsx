@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Feed from 'common/components/Feed';
 import MemberCard from 'common/components/MemberCard';

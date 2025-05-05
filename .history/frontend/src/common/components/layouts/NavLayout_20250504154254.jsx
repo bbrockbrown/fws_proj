@@ -72,20 +72,17 @@ export default function NavLayout() {
   const [page, setPage] = useState('');
 
   return (
-    <>
-      <NavContainer>
-        <div className='logo-container'>
-          <img src={logo} alt='logo' width='100' height='100' />
-        </div>
-        <div className='search-bar'>
-          <SearchBar />
-        </div>
-        <div className='navigation'>
-          <Button variant='outlined'> Log In </Button>
-          <Button variant='outlined'> Sign Up </Button>
-        </div>
-      </NavContainer>
-      <Outlet />
-    </>
+    <NavContainer>
+      <div className='logo-container'>
+        <img src={logo} alt='logo' width='100' height='100' />
+      </div>
+      <div className='search-bar'>
+        <SearchBar />
+      </div>
+      <div className='navigation'>
+        <Button variant='outlined'> Log In </Button>
+        <Button variant='outlined'> Sign Up </Button>
+      </div>
+    </NavContainer>
   );
 }

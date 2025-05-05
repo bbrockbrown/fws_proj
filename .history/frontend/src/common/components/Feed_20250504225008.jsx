@@ -82,24 +82,28 @@ export default function Feed() {
 
   function formatDate(dateString) {
     const nowMs = Date.now();
+    console.log('now ms', nowMs);
     const postedMs = new Date(dateString).getTime();
-    // always work with a positive difference
-    const diffMs = Math.abs(nowMs - postedMs);
+    console.log('posted', postedMs);
+    // if the post time is in the future, treat it as "just now"
+    let diffSeconds = Math.floor(Math.max(nowMs - postedMs, 0) / 1000);
 
-    const seconds = Math.floor(diffMs / 1000);
-    const minutes = Math.floor(diffMs / (1000 * 60));
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (seconds < 60) {
-      return `posted ${seconds} seconds ago`;
-    } else if (minutes < 60) {
-      return `posted ${minutes} minutes ago`;
-    } else if (hours < 24) {
-      return `posted ${hours} hours ago`;
-    } else {
-      return `posted ${days} days ago`;
+    if (diffSeconds < 60) {
+      return `posted ${diffSeconds} seconds ago`;
     }
+
+    const diffMinutes = Math.floor(diffSeconds / 60);
+    if (diffMinutes < 60) {
+      return `posted ${diffMinutes} minutes ago`;
+    }
+
+    const diffHours = Math.floor(diffMinutes / 60);
+    if (diffHours < 24) {
+      return `posted ${diffHours} hours ago`;
+    }
+
+    const diffDays = Math.floor(diffHours / 24);
+    return `posted ${diffDays} days ago`;
   }
 
   return (

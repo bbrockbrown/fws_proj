@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import styled from 'styled-components';
@@ -29,35 +29,27 @@ const CardTitle = styled.div`
 
 export default function MemberCard() {
   const [allUsers, setAllUsers] = useState([]);
-  // const [newestMembers, setNewestMembers] = useState([]);
-  // const [activeMembers, setActiveMembers] = useState([]);
-  // const [popularMembers, setPopularMembers] = useState([]);
+  const [newestMembers, setNewestMembers] = useState([]);
+  const [activeMembers, setActiveMembers] = useState([]);
+  const [popularMembers, setPopularMembers] = useState([]);
 
   // Get all users upon initial render
   useEffect(() => {
     const getAllUsers = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/users`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-type': 'application/json',
-            },
-          }
-        );
-        if (!response.ok) {
-          throw new Error('ERROR FETCHING', response.status);
-        }
-        const data = await response.json();
-        console.log('Fetched users', data);
-        setAllUsers(data);
+        const users = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users`);
+        setAllUsers(users);
       } catch (e) {
-        console.error('Error! Message is:', e.message);
+        console.error('Error', e);
       }
     };
     getAllUsers();
   }, []);
+
+  // Log users in testing whenever we fetch
+  useEffect(() => {
+    console.log('New users:', allUsers);
+  }, [allUsers]);
 
   function MemberToggle() {
     const [mode, setMode] = useState('Newest');

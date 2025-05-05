@@ -80,55 +80,37 @@ export default function Feed() {
     getAllPosts();
   }, []);
 
-  function formatDate(dateString) {
-    const nowMs = Date.now();
-    const postedMs = new Date(dateString).getTime();
-    // always work with a positive difference
-    const diffMs = Math.abs(nowMs - postedMs);
-
-    const seconds = Math.floor(diffMs / 1000);
-    const minutes = Math.floor(diffMs / (1000 * 60));
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (seconds < 60) {
-      return `posted ${seconds} seconds ago`;
-    } else if (minutes < 60) {
-      return `posted ${minutes} minutes ago`;
-    } else if (hours < 24) {
-      return `posted ${hours} hours ago`;
-    } else {
-      return `posted ${days} days ago`;
-    }
-  }
-
   return (
     <FeedContainer>
       <PostList>
-        {posts.map((post) => (
-          <PostItem key={post.id}>
-            <PostAvatar>
-              <Avatar sx={{ bgcolor: 'purple', width: '30px', height: '30px' }}>
-                <p style={{ fontSize: '18px' }}>BB</p>
-              </Avatar>
-            </PostAvatar>
-            <PostContent>
-              <div style={{ marginBottom: '0.5rem', textAlign: 'left' }}>
-                <div>
-                  <p> {post.caption} </p>
-                </div>
-                <div>
-                  <p style={{ fontSize: '1rem', color: 'gray' }}>
-                    {formatDate(post.created_at)}
-                  </p>
-                </div>
+        <PostItem>
+          <PostAvatar>
+            <Avatar sx={{ bgcolor: 'purple', width: '30px', height: '30px' }}>
+              <p style={{ fontSize: '18px' }}>BB</p>
+            </Avatar>
+          </PostAvatar>
+          <PostContent>
+            <div style={{ marginBottom: '0.5rem', textAlign: 'left' }}>
+              <div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse{' '}
+                </p>
               </div>
-              <div style={{ textAlign: 'left' }}>
-                <p>this is a comment</p>
+              <div>
+                <p style={{ fontSize: '1rem', color: 'gray' }}>
+                  4 hours, 1 minute ago
+                </p>
               </div>
-            </PostContent>
-          </PostItem>
-        ))}
+            </div>
+            <div style={{ textAlign: 'left' }}>
+              <p>this is a comment</p>
+            </div>
+          </PostContent>
+        </PostItem>
       </PostList>
     </FeedContainer>
   );
