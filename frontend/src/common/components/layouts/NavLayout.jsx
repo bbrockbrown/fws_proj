@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import logo from 'assets/icons/logo.svg';
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavContainer = styled.div`
@@ -71,17 +72,20 @@ export default function NavLayout() {
   const [page, setPage] = useState('');
 
   return (
-    <NavContainer>
-      <div className='logo-container'>
-        <img src={logo} alt='logo' width='100' height='100' />
-      </div>
-      <div className='search-bar'>
-        <SearchBar />
-      </div>
-      <div className='navigation'>
-        <Button variant='outlined'> Log In </Button>
-        <Button variant='outlined'> Sign Up </Button>
-      </div>
-    </NavContainer>
+    <>
+      <NavContainer>
+        <div className='logo-container'>
+          <img src={logo} alt='logo' width='100' height='100' />
+        </div>
+        <div className='search-bar'>
+          <SearchBar />
+        </div>
+        <div className='navigation'>
+          <Button variant='outlined'> Log In </Button>
+          <Button variant='outlined'> Sign Up </Button>
+        </div>
+      </NavContainer>
+      <Outlet />
+    </>
   );
 }
